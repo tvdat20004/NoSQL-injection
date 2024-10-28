@@ -10,6 +10,7 @@ import AdminDashboard from './pages/adminDashboard/adminDashboard';
 import UserDashboard from './pages/sideBar/sideBar';
 import Layout from './components/Layout';
 import AuthBypass from './components/tests/AuthBypass';
+import VulnerableAuthTest from './components/tests/VulnerableAuthTest';
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -37,12 +38,17 @@ function App() {
           <Route path="auth-bypass" element={<AuthBypass />} />
         </Route>
 
+        <Route 
+          path="/test/auth-bypass/vulnerable" 
+          element={<VulnerableAuthTest />} 
+        />
+
         {/* Root redirect */}
         <Route 
           path="/" 
           element={<Navigate to="/home" replace />} 
         />
-
+        
         {/* Catch all route */}
         <Route 
           path="*" 

@@ -8,7 +8,7 @@ const userRoute = require("./users");
 
 const userRoutes = require('./userRoutes');
 
-const vulQueryString = require("./router/vulnerable/queryStrings");
+const vulQueryString = require("./routes/vulnerable/queryStrings");
 
 dotenv.config();
 const app = express();

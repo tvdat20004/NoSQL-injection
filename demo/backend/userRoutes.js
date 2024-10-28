@@ -11,7 +11,7 @@ router.get('/users', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch users' });
   }
-});
+}); 
 
 // New DELETE route to delete a user by ID
 router.delete('/users/:id', async (req, res) => {
@@ -23,6 +23,44 @@ router.delete('/users/:id', async (req, res) => {
       res.status(500).json({ error: 'Failed to delete user' });
     }
 });
-  
+
+router.get("/users/dashboard", async (req, res) => {
+  try {
+      const users = await User.find({ 
+          isHidden: false 
+      }).select('-password -updatedAt -__v')
+        .sort({ createdAt: -1 });
+      
+      res.status(200).json(users);
+  } catch (err) {
+      res.status(500).json({ 
+          message: "Error fetching non-admin users", 
+          error: err.message 
+      });
+  }
+});
+// Vulnerable search endpoint
+router.post('/search', async (req, res) => {
+  try {
+      const query = req.body.query;
+      const users = await User.find(query);
+      res.json(users);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+// // Get visible users
+// router.get('/test/auth-bypass/vulnerable', async (req, res) => {
+//   try {
+//       const users = await User.find({ isHidden: false });
+//       res.json(users);
+//       console.log('gggggggg');
+//   } catch (error) {
+//       res.status(500).json({ message: error.message });
+//       console.log('aaaaaaaaa');
+//   }
+// });
+
 
 module.exports = router;
