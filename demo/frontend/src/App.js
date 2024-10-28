@@ -8,24 +8,47 @@ import { useContext } from 'react';
 import Home from './pages/Home/home';
 import AdminDashboard from './pages/adminDashboard/adminDashboard';
 import UserDashboard from './pages/sideBar/sideBar';
+import Layout from './components/Layout';
+import AuthBypass from './components/tests/AuthBypass';
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
+    // 
     <BrowserRouter>
       <Routes>
-        <Route exact path='/login' element={
-            !user ? <Login /> : <Navigate to="/" />}
+        {/* Login route */}
+        <Route 
+          path="/login" 
+          element={!user ? <Login /> : <Navigate to="/home" />} 
         />
-        <Route exact path='/' element={
-          user ? <Home /> : <Navigate to="/login" />}
+
+        {/* Admin route */}
+        <Route 
+          path="/admin" 
+          element={user?.isAdmin ? <AdminDashboard /> : <Navigate to="/login" />} 
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/user/*" element={<UserDashboard />} />
-        <Route path="/" element={<Navigate to="/login" />} />
+
+        {/* User dashboard with nested routes */}
+        <Route 
+          path="/home" 
+          element={<UserDashboard />}
+        >
+          <Route path="auth-bypass" element={<AuthBypass />} />
+        </Route>
+
+        {/* Root redirect */}
+        <Route 
+          path="/" 
+          element={<Navigate to="/home" replace />} 
+        />
+
+        {/* Catch all route */}
+        <Route 
+          path="*" 
+          element={<Navigate to="/home" replace />} 
+        />
       </Routes>
-      
     </BrowserRouter>
   );
 }

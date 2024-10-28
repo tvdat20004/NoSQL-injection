@@ -5,7 +5,11 @@ const cors = require("cors");
 const path = require("path");
 const loginRoute = require("./login");
 const userRoute = require("./users");
+
 const userRoutes = require('./userRoutes');
+
+const vulQueryString = require("./router/vulnerable/queryStrings");
+
 dotenv.config();
 const app = express();
 const PORT = 8800;
@@ -20,6 +24,7 @@ mongoose.connect(process.env.MONGO_URL, {})
 app.use("/", loginRoute);
 app.use("/users", userRoute);
 app.use("/api", userRoutes);
+app.use("/vulnerable/query", vulQueryString);
 
 app.listen(PORT, () => {
     console.log("Backend server is running!");
