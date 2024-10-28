@@ -5,15 +5,17 @@ import {SiGmail} from 'react-icons/si'
 import "./login.css";
 import { login } from "../authContext/apiCalls";
 import { AuthContext } from "../authContext/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { dispatch } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleLogin = (e) => {
         e.preventDefault();
-        login({ email, password }, dispatch);
+        login({ email, password }, dispatch, navigate);
     };
     return (
         <div className="login">
