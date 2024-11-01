@@ -10,7 +10,7 @@ const Sidebar = ({ activeTest, setActiveTest }) => {
   
   const testTypes = [
     { name: 'Authentication Bypass', path: 'auth-bypass' },
-    { name: 'Regex Injection', path: 'regex-injection' },
+    { name: 'Operator Injection', path: 'operator-injection' },
     { name: 'JavaScript Injection', path: 'javascript-injection' },
     { name: 'Projection Injection', path: 'projection-injection' },
     { name: 'Aggregation Injection', path: 'aggregation-injection' },
@@ -87,20 +87,12 @@ const Sidebar = ({ activeTest, setActiveTest }) => {
 const UserDashboard = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/login');
-  };
-
   return (
     <div className="dashboard-container">
       <Sidebar />
       <div className="main-content">
         <nav className="navbar">
           <h1>NoSQL Injection Testing</h1>
-          <button onClick={handleLogout} className="logout-button">
-            Logout
-          </button>
         </nav>
         <Outlet />
       </div>
