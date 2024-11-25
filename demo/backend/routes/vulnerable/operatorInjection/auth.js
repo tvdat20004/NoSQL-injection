@@ -7,13 +7,13 @@ const ROUTES = require('./constants');
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
-        
+
         // Vulnerable to NoSQL injection
         const user = await User.findOne({
             username: username,
             password: password
         });
-
+        
         if (user) {
             // Tạo session token
             const sessionToken = Buffer.from(JSON.stringify({
@@ -23,8 +23,8 @@ router.post('/login', async (req, res) => {
             })).toString('base64');
 
             // Set cookie và trả về response phù hợp với role
-            res.setHeader('Set-Cookie', `session=${sessionToken}; Path=/; HttpOnly`);
-            
+            res.setHeader('Set-Cookie', `session=${sessionToken}; Path=/;  HttpOnly`);
+
             if (user.role === 'admin') {
                 res.json({
                     success: true,
@@ -48,8 +48,6 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' });
     }
 });
-
-
 
 // Route kiểm tra quyền admin
 router.get('/check-admin', (req, res) => {

@@ -9,10 +9,12 @@ import AdminDashboard from './pages/adminDashboard/adminDashboard';
 import UserDashboard from './pages/sideBar/sideBar';
 import AuthBypass from './components/tests/AuthBypass/AuthBypass';
 import VulnerableAuthTest from './components/tests/AuthBypass/VulnerableAuthTest';
+import SecureAuthTest from './components/tests/AuthBypass/SecureAuthTest';
 
 //case 2
 import OperatorInjection from './components/tests/OperatorInjection/OperatorInjection';
-import LoginForm from './components/tests/OperatorInjection/LoginForm';
+import LoginFormVul from './components/tests/OperatorInjection/LoginFormVul';
+import LoginFormSec from './components/tests/OperatorInjection/LoginFormSecure';
 import { ROUTES } from './components/tests/OperatorInjection/config/routes';
 import AdminDashboardCase2 from './components/tests/OperatorInjection/AdminDashboard';
 import UserDashboardCase2 from './components/tests/OperatorInjection/UserDashboard';
@@ -48,8 +50,13 @@ function App() {
           path="/test/auth-bypass/vulnerable" 
           element={<VulnerableAuthTest />} 
         />
+        <Route 
+          path="/test/auth-bypass/secure" 
+          element={<SecureAuthTest />} 
+        />
 
-      <Route path={ROUTES.LOGIN} element={<LoginForm />} />
+      <Route path={ROUTES.LOGINVUL} element={<LoginFormVul />} />
+      <Route path={ROUTES.LOGINSEC} element={<LoginFormSec />} />
       <Route path={ROUTES.ADMIN} element={<AdminDashboardCase2 />} />
       <Route path={ROUTES.USER} element={<UserDashboardCase2 />} />
 

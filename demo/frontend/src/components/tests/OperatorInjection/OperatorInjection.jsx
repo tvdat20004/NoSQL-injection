@@ -15,7 +15,7 @@ const OperatorInjection = () => {
           Run Vulnerable Test
         </button>
         <button 
-          onClick={() => window.open('/home/operator-injection/secure', '_blank')} 
+          onClick={() => window.open('/test/operator-injection/secure', '_blank')} 
           className="injection-test-button"
         >
           Run Secure Test

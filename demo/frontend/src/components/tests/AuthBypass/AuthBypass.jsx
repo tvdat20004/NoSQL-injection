@@ -15,7 +15,7 @@ const AuthBypass = () => {
           Run Vulnerable Test
         </button>
         <button 
-          onClick={() => window.open('/home/auth-bypass/secure', '_blank')} 
+          onClick={() => window.open('/test/auth-bypass/secure', '_blank')} 
           className="injection-test-button"
         >
           Run Secure Test

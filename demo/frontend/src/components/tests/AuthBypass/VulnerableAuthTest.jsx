@@ -18,7 +18,7 @@ const VulnerableAuthTest = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8800/api/users/dashboard');
+      const response = await fetch('http://localhost:8800/api/vulnerable/authBypass/users/dashboard');
       const data = await response.json()
       setUsers(data)
     } catch (err) {
@@ -37,14 +37,14 @@ const VulnerableAuthTest = () => {
         searchQuery = { username: query }
       }
 
-      const response = await fetch('http://localhost:8800/api/search', {
+      const response = await fetch('http://localhost:8800/api/vulnerable/authBypass/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ query: searchQuery }),
       })
-      
+
       const data = await response.json()
       setUsers(data)
     } catch (err) {
@@ -55,11 +55,11 @@ const VulnerableAuthTest = () => {
   return (
     <div className="vulnerable-test-container">
       <header className="test-header">
-        <h1>Users List</h1>
+        <h1>Users List - Vulnerable Test</h1>
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by email/username or enter NoSQL query..."
+            placeholder="Search by username"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="search-input"

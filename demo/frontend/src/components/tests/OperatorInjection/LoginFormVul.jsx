@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const LoginForm = () => {
+const LoginFormVul = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,7 +15,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8800/api/usersCase2/login', {
+      const response = await fetch('http://localhost:8800/api/vulnerable/usersCase2/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,4 +73,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginFormVul;
