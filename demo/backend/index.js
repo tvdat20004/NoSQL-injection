@@ -49,7 +49,7 @@ app.use("/api/secure/case1/", secureUserRoutesCase1);
 app.use("/api/vulnerable/case2/", vulnUserRouteCase2);
 app.use("/api/secure/case2/", secureUserRouteCase2);
 // case3 
-app.use("/api/vulnerable/usersCase3/", vulnUserRouteCase3);
+app.use("/api/vulnerable/case3/", vulnUserRouteCase3);
 
 app.listen(PORT, () => {
   console.log("Backend server is running!");
