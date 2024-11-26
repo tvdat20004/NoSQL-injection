@@ -15,7 +15,7 @@ const ExfiltratingData = () => {
           Run Vulnerable Test
         </button>
         <button 
-          onClick={() => window.open('/home/exfiltratingData/secure', '_blank')} 
+          onClick={() => window.open('/test/exfiltratingData/secure', '_blank')} 
           className="injection-test-button"
         >
           Run Secure Test

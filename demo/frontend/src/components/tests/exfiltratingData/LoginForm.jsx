@@ -13,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:8800/api/usersCase3/login",
+        "http://localhost:8800/api/vulnerable/case3/login",
         {
           method: "POST",
           headers: {

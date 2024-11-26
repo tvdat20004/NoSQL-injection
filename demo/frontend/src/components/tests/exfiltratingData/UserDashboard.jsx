@@ -12,7 +12,7 @@ const UserDashboardCase3 = () => {
     const fetchUserDetails = async (username) => {
       try {
         const response = await fetch(
-          `http://localhost:8800/api/usersCase3/lookup?username=${username}`,
+          `http://localhost:8800/api/vulnerable/case3/lookup?username=${username}`,
           {
             credentials: "include",
           }
@@ -42,7 +42,7 @@ const UserDashboardCase3 = () => {
   const handleLogout = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8800/api/usersCase3/logout",
+        "http://localhost:8800/api/vulnerable/case3/logout",
         {
           method: "POST",
           credentials: "include",
