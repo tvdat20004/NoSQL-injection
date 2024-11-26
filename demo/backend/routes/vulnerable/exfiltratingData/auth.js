@@ -2,8 +2,7 @@ const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 const User = require("./User");
 // JWT Secret
-const JWT_SECRET = "your-secret-key";
-
+const JWT_SECRET = process.env.JWT_SECRET;
 // Auto setup initial data
 const setupInitialData = async () => {
   try {
@@ -13,7 +12,7 @@ const setupInitialData = async () => {
     // Create admin user
     await User.create({
       username: "administrator",
-      email : "lmao@example.com",
+      email: "lmao@example.com",
       password: "secretpass",
       role: "admin",
     });
@@ -22,7 +21,7 @@ const setupInitialData = async () => {
     await User.create({
       username: "wiener",
       password: "peter",
-      email : "wiener@gmail.com",
+      email: "wiener@gmail.com",
       role: "user",
     });
 
@@ -36,7 +35,6 @@ const setupInitialData = async () => {
 };
 setupInitialData();
 // Middleware to verify JWT
-
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -66,33 +64,35 @@ router.post("/login", async (req, res) => {
 });
 
 // Vulnerable user lookup endpoint
-router.get('/lookup', async (req, res) => {
+router.get("/lookup", async (req, res) => {
   try {
-      const whereClause = `this.username == '${req.query.username}'`;
-      console.log("Generated where clause:", whereClause);
-      
-      const query = {
-          $where: whereClause
-      };
-      
-      console.log("Full query:", JSON.stringify(query, null, 2));
-      
-      const user = await User.findOne(query);
-      
-      if (user) {
-          console.log("Found user:", user.username);
-          res.json({
-              username: user.username,
-              email : user.email,
-              role: user.role
-          });
-      } else {
-          console.log("No user found");
-          res.status(404).json({ error: 'User not found' });
-      }
+    const whereClause = `this.username == '${req.query.username}'`;
+    console.log("Generated where clause:", whereClause);
+
+    const query = {
+      $where: whereClause,
+    };
+
+    console.log("Full query:", JSON.stringify(query, null, 2));
+
+    const user = await User.findOne(query);
+
+    if (user) {
+      console.log("Found user:", user.username);
+      res.json({
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      });
+    } else {
+      console.log("No user found");
+      res.status(404).json({ error: "User not found" });
+    }
   } catch (error) {
-      console.error('Lookup error details:', error);
-      res.status(500).json({ error: 'Server error during lookup', details: error.message });
+    console.error("Lookup error details:", error);
+    res
+      .status(500)
+      .json({ error: "Server error during lookup", details: error.message });
   }
 });
 
