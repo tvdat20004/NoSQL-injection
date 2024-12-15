@@ -19,10 +19,15 @@ import AdminDashboardCase2 from "./components/tests/OperatorInjection/AdminDashb
 import UserDashboardCase2 from "./components/tests/OperatorInjection/UserDashboard";
 
 // case 3
-import LoginForm3 from "./components/tests/exfiltratingData/LoginForm";
+import LoginFormVul3 from "./components/tests/exfiltratingData/LoginFormVul";
+import LoginFormSec3 from "./components/tests/exfiltratingData/LoginFormSec";
+
 import { ROUTES3 } from "./components/tests/exfiltratingData/config/routes";
 import AdminDashboardCase3 from "./components/tests/exfiltratingData/AdminDashboard";
-import UserDashboardCase3 from "./components/tests/exfiltratingData/UserDashboard";
+
+import UserDashboardCaseVul3 from "./components/tests/exfiltratingData/UserDashboardVul";
+import UserDashboardCaseSec3 from "./components/tests/exfiltratingData/UserDashboardSec";
+
 import ExfiltratingData from "./components/tests/exfiltratingData/exfiltratingData";
 
 function App() {
@@ -49,9 +54,12 @@ function App() {
         <Route path={ROUTES2.ADMIN} element={<AdminDashboardCase2 />} />
         <Route path={ROUTES2.USER} element={<UserDashboardCase2 />} />
 
-        <Route path={ROUTES3.LOGIN} element={<LoginForm3 />} />
+        <Route path={ROUTES3.LOGIN_VUL} element={<LoginFormVul3 />} />
+        <Route path={ROUTES3.LOGIN_SEC} element={<LoginFormSec3 />} />
         <Route path={ROUTES3.ADMIN} element={<AdminDashboardCase3 />} />
-        <Route path={ROUTES3.USER} element={<UserDashboardCase3 />} />
+        <Route path={ROUTES3.USER_VUL} element={<UserDashboardCaseVul3 />} />
+        <Route path={ROUTES3.USER_SEC} element={<UserDashboardCaseSec3 />} />
+
         {/* Root redirect */}
         <Route path="/" element={<Navigate to="/home" replace />} />
 

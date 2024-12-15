@@ -15,7 +15,7 @@ const secureUserRouteCase2 = require("./routes/secure/operatorInjection/auth");
 
 // import route for case 3
 const vulnUserRouteCase3 = require("./routes/vulnerable/exfiltratingData/auth");
-// const secureUserRouteCase3 = require("./routes/vulnerable/exfiltratingData/auth");
+const secureUserRouteCase3 = require("./routes/secure/exfiltratingData/auth");
 
 
 const bodyParser = require("body-parser");
@@ -50,7 +50,7 @@ app.use("/api/vulnerable/case2/", vulnUserRouteCase2);
 app.use("/api/secure/case2/", secureUserRouteCase2);
 // case3 
 app.use("/api/vulnerable/case3/", vulnUserRouteCase3);
-
+app.use("/api/secure/case3/", secureUserRouteCase3);
 app.listen(PORT, () => {
   console.log("Backend server is running!");
 });

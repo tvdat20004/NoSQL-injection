@@ -7,7 +7,7 @@ const AdminDashboardCase2 = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:8800/api/usersCase2/logout', {
+      const response = await fetch('http://localhost:8800/api/vulnerable/case2/logout', {
         method: 'POST',
         credentials: 'include'
       });

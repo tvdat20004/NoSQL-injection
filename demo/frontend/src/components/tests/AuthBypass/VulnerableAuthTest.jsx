@@ -43,7 +43,7 @@ const VulnerableAuthTest = () => {
       }
 
       const response = await fetch(
-        "http://localhost:8800/api/vulnerable/authBypass/search",
+        "http://localhost:8800/api/vulnerable/case1/search",
         {
           method: "POST",
           headers: {

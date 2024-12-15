@@ -44,7 +44,6 @@ router.get("/users/dashboard", async (req, res) => {
 router.post("/search", async (req, res) => {
   try {
     const query = req.body.query;
-    console.log(typeof query);
     const users = await User.find(query);
     res.json(users);
   } catch (error) {

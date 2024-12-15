@@ -43,7 +43,7 @@ const SecureAuthTest = () => {
       }
 
       const response = await fetch(
-        "http://localhost:8800/api/secure/authBypass/search",
+        "http://localhost:8800/api/secure/case1/search",
         {
           method: "POST",
           headers: {

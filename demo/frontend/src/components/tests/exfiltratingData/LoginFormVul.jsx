@@ -27,7 +27,7 @@ const LoginForm = () => {
       const data = await response.json();
       if (data.success) {
         sessionStorage.setItem("username", username);
-        const encodedUrl = data.role === "admin" ? ROUTES3.ADMIN : ROUTES3.USER;
+        const encodedUrl = data.role === "admin" ? ROUTES3.ADMIN : ROUTES3.USER_VUL;
         navigate(encodedUrl);
       } else {
         setError(data.message || "Login failed");
