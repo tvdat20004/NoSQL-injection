@@ -1,6 +1,5 @@
 // UserDashboard.jsx
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./sideBar.css";
 import { Outlet } from "react-router-dom";
@@ -12,8 +11,8 @@ const Sidebar = ({ activeTest, setActiveTest }) => {
     { name: "Authentication Bypass", path: "auth-bypass" },
     { name: "Operator Injection", path: "operator-injection" },
     { name: "Exfiltrating data in MongoDB", path: "exfiltratingData" },
-    { name: "Projection Injection", path: "projection-injection" },
-    { name: "Aggregation Injection", path: "aggregation-injection" },
+    { name: "Extracting unknown field", path: "extract-unknowfield" },
+    { name: "Timming attack", path: "timing-attack" },
     { name: "Update Injection", path: "update-injection" },
   ];
 
@@ -38,7 +37,6 @@ const Sidebar = ({ activeTest, setActiveTest }) => {
 };
 
 const UserDashboard = () => {
-  const navigate = useNavigate();
 
   return (
     <div className="dashboard-container">

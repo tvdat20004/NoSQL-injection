@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Login from './pages/login/login';
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "./pages/authContext/AuthContext";
-import { useContext } from "react";
+// import { AuthContext } from "./pages/authContext/AuthContext";
+// import { useContext } from "react";
 import UserDashboard from "./pages/sideBar/sideBar";
 import AuthBypass from "./components/tests/AuthBypass/AuthBypass";
 import VulnerableAuthTest from "./components/tests/AuthBypass/VulnerableAuthTest";
@@ -30,8 +30,20 @@ import UserDashboardCaseSec3 from "./components/tests/exfiltratingData/UserDashb
 
 import ExfiltratingData from "./components/tests/exfiltratingData/exfiltratingData";
 
+// case 4
+import LoginTestCase4 from "./components/tests/ExtractingUnknowField/LoginTestCase4/LoginTestCase4";
+
+import ForgotPassword from "./components/tests/ExtractingUnknowField/ForgotPassword/ForgotPassword";
+import ResetPassword from "./components/tests/ExtractingUnknowField/ResetPassword/ResetPassword";
+import ExtractingUnknownField from './components/tests/ExtractingUnknowField/ExtractingUnknownField';
+
+// case 5
+import TimingAttack from "./components/tests/TimingAttack/TimingAttack";
+import DocumentList from "./components/tests/TimingAttack/DocumentList/DocumentList";
+import DocumentListSecure from "./components/tests/TimingAttack/DocumentListSecure/DocumentListSecure";
+
 function App() {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   return (
     //
     <BrowserRouter>
@@ -41,6 +53,9 @@ function App() {
           <Route path="auth-bypass" element={<AuthBypass />} />
           <Route path="operator-injection" element={<OperatorInjection />} />
           <Route path="exfiltratingData" element={<ExfiltratingData />} />
+          <Route path="extract-unknowfield" element={<ExtractingUnknownField />} />
+          <Route path="timing-attack" element={<TimingAttack />} />
+
         </Route>
 
         <Route
@@ -60,11 +75,18 @@ function App() {
         <Route path={ROUTES3.USER_VUL} element={<UserDashboardCaseVul3 />} />
         <Route path={ROUTES3.USER_SEC} element={<UserDashboardCaseSec3 />} />
 
+        <Route path="/test/extract-unknowfield/vulnerable" element={<LoginTestCase4 />} />
+        <Route path="/test/extract-unknowfield/vulnerable/forgot-password" element={<ForgotPassword />} />
+        <Route path="/test/extract-unknowfield/vulnerable/reset-password" element={<ResetPassword />} />
+        
+        <Route path="/test/timing-attack/vulnerable/" element={<DocumentList />} />
+        <Route path="/test/timing-attack/secure/" element={<DocumentListSecure />} />
+
         {/* Root redirect */}
         <Route path="/" element={<Navigate to="/home" replace />} />
 
         {/* Catch all route */}
-        <Route path="*" element={<Navigate to="/home" replace />} />
+        {/* <Route path="*" element={<Navigate to="/home" replace />} /> */}
       </Routes>
     </BrowserRouter>
   );
