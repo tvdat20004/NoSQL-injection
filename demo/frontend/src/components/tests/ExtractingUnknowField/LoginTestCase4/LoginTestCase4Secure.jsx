@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './LoginTestCase4.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./LoginTestCase4.css";
 
 const LoginTestCase4Secure = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -21,10 +21,13 @@ const LoginTestCase4Secure = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:8800/api/secure/case4/login', formData);
+      const response = await axios.post(
+        "http://localhost:8800/api/secure/case4/login",
+        formData
+      );
       alert(response.data.message);
     } catch (error) {
-      alert(error.response?.data?.message || 'An error occurred');
+      alert(error.response?.data?.message || "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -38,7 +41,7 @@ const LoginTestCase4Secure = () => {
           <label htmlFor="username">Username:</label>
           <input
             id="username"
-            type="text" 
+            type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
@@ -46,7 +49,7 @@ const LoginTestCase4Secure = () => {
             className="form-input"
           />
         </div>
-   
+
         <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
@@ -59,23 +62,22 @@ const LoginTestCase4Secure = () => {
             className="form-input"
           />
         </div>
-   
-        <button 
-          type="submit" 
-          className="submit-button"
-          disabled={loading}
-        >
-          {loading ? 'Logging in...' : 'Login'}
+
+        <button type="submit" className="submit-button" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
-   
+
         <div className="form-footer">
-          <Link to="/test/extract-unknowfield/secure/forgot-password" className="forgot-password-link">
+          <Link
+            to="/test/extract-unknowfield/secure/forgot-password"
+            className="forgot-password-link"
+          >
             Forgot Password?
           </Link>
         </div>
       </form>
     </div>
-   );
+  );
 };
 
 export default LoginTestCase4Secure;

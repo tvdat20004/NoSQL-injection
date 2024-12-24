@@ -31,7 +31,7 @@ import UserDashboardCaseSec3 from "./components/tests/exfiltratingData/UserDashb
 import ExfiltratingData from "./components/tests/exfiltratingData/exfiltratingData";
 
 // case 4
-// vuln 
+// vuln
 import LoginTestCase4Vul from "./components/tests/ExtractingUnknowField/LoginTestCase4/LoginTestCase4Vul";
 import ForgotPasswordVuln from "./components/tests/ExtractingUnknowField/ForgotPassword/ForgotPasswordVuln";
 import ResetPasswordVuln from "./components/tests/ExtractingUnknowField/ResetPassword/ResetPasswordVuln";
@@ -40,7 +40,7 @@ import ForgotPasswordSecure from "./components/tests/ExtractingUnknowField/Forgo
 import ResetPasswordSecure from "./components/tests/ExtractingUnknowField/ResetPassword/ResetPasswordSecure";
 import LoginTestCase4Secure from "./components/tests/ExtractingUnknowField/LoginTestCase4/LoginTestCase4Secure";
 
-import ExtractingUnknownField from './components/tests/ExtractingUnknowField/ExtractingUnknownField';
+import ExtractingUnknownField from "./components/tests/ExtractingUnknowField/ExtractingUnknownField";
 
 // case 5
 import TimingAttack from "./components/tests/TimingAttack/TimingAttack";
@@ -58,9 +58,11 @@ function App() {
           <Route path="auth-bypass" element={<AuthBypass />} />
           <Route path="operator-injection" element={<OperatorInjection />} />
           <Route path="exfiltratingData" element={<ExfiltratingData />} />
-          <Route path="extract-unknowfield" element={<ExtractingUnknownField />} />
+          <Route
+            path="extract-unknowfield"
+            element={<ExtractingUnknownField />}
+          />
           <Route path="timing-attack" element={<TimingAttack />} />
-
         </Route>
 
         <Route
@@ -80,16 +82,40 @@ function App() {
         <Route path={ROUTES3.USER_VUL} element={<UserDashboardCaseVul3 />} />
         <Route path={ROUTES3.USER_SEC} element={<UserDashboardCaseSec3 />} />
 
-        <Route path="/test/extract-unknowfield/vulnerable" element={<LoginTestCase4Vul />} />
-        <Route path="/test/extract-unknowfield/vulnerable/forgot-password" element={<ForgotPasswordVuln />} />
-        <Route path="/test/extract-unknowfield/vulnerable/reset-password" element={<ResetPasswordVuln />} />
-        
-        <Route path="/test/extract-unknowfield/secure/forgot-password" element={<ForgotPasswordSecure />} />
-        <Route path="/test/extract-unknowfield/secure/reset-password" element={<ResetPasswordSecure />} />
-        <Route path="/test/extract-unknowfield/secure" element={<LoginTestCase4Secure />} />
+        <Route
+          path="/test/extract-unknowfield/vulnerable"
+          element={<LoginTestCase4Vul />}
+        />
+        <Route
+          path="/test/extract-unknowfield/vulnerable/forgot-password"
+          element={<ForgotPasswordVuln />}
+        />
+        <Route
+          path="/test/extract-unknowfield/vulnerable/reset-password"
+          element={<ResetPasswordVuln />}
+        />
 
-        <Route path="/test/timing-attack/vulnerable/" element={<DocumentList />} />
-        <Route path="/test/timing-attack/secure/" element={<DocumentListSecure />} />
+        <Route
+          path="/test/extract-unknowfield/secure/forgot-password"
+          element={<ForgotPasswordSecure />}
+        />
+        <Route
+          path="/test/extract-unknowfield/secure/reset-password"
+          element={<ResetPasswordSecure />}
+        />
+        <Route
+          path="/test/extract-unknowfield/secure"
+          element={<LoginTestCase4Secure />}
+        />
+
+        <Route
+          path="/test/timing-attack/vulnerable/"
+          element={<DocumentList />}
+        />
+        <Route
+          path="/test/timing-attack/secure/"
+          element={<DocumentListSecure />}
+        />
 
         {/* Root redirect */}
         <Route path="/" element={<Navigate to="/home" replace />} />
