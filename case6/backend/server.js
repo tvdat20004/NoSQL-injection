@@ -1,10 +1,8 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
 require('./config/database');
 
-// Thêm middleware CORS trước các routes
 app.use(cors({
     origin: 'http://localhost:3001',
     credentials: true
