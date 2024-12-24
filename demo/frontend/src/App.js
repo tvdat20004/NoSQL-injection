@@ -31,10 +31,15 @@ import UserDashboardCaseSec3 from "./components/tests/exfiltratingData/UserDashb
 import ExfiltratingData from "./components/tests/exfiltratingData/exfiltratingData";
 
 // case 4
-import LoginTestCase4 from "./components/tests/ExtractingUnknowField/LoginTestCase4/LoginTestCase4";
+// vuln 
+import LoginTestCase4Vul from "./components/tests/ExtractingUnknowField/LoginTestCase4/LoginTestCase4Vul";
+import ForgotPasswordVuln from "./components/tests/ExtractingUnknowField/ForgotPassword/ForgotPasswordVuln";
+import ResetPasswordVuln from "./components/tests/ExtractingUnknowField/ResetPassword/ResetPasswordVuln";
+// secure
+import ForgotPasswordSecure from "./components/tests/ExtractingUnknowField/ForgotPassword/ForgotPasswordSecure";
+import ResetPasswordSecure from "./components/tests/ExtractingUnknowField/ResetPassword/ResetPasswordSecure";
+import LoginTestCase4Secure from "./components/tests/ExtractingUnknowField/LoginTestCase4/LoginTestCase4Secure";
 
-import ForgotPassword from "./components/tests/ExtractingUnknowField/ForgotPassword/ForgotPassword";
-import ResetPassword from "./components/tests/ExtractingUnknowField/ResetPassword/ResetPassword";
 import ExtractingUnknownField from './components/tests/ExtractingUnknowField/ExtractingUnknownField';
 
 // case 5
@@ -75,10 +80,14 @@ function App() {
         <Route path={ROUTES3.USER_VUL} element={<UserDashboardCaseVul3 />} />
         <Route path={ROUTES3.USER_SEC} element={<UserDashboardCaseSec3 />} />
 
-        <Route path="/test/extract-unknowfield/vulnerable" element={<LoginTestCase4 />} />
-        <Route path="/test/extract-unknowfield/vulnerable/forgot-password" element={<ForgotPassword />} />
-        <Route path="/test/extract-unknowfield/vulnerable/reset-password" element={<ResetPassword />} />
+        <Route path="/test/extract-unknowfield/vulnerable" element={<LoginTestCase4Vul />} />
+        <Route path="/test/extract-unknowfield/vulnerable/forgot-password" element={<ForgotPasswordVuln />} />
+        <Route path="/test/extract-unknowfield/vulnerable/reset-password" element={<ResetPasswordVuln />} />
         
+        <Route path="/test/extract-unknowfield/secure/forgot-password" element={<ForgotPasswordSecure />} />
+        <Route path="/test/extract-unknowfield/secure/reset-password" element={<ResetPasswordSecure />} />
+        <Route path="/test/extract-unknowfield/secure" element={<LoginTestCase4Secure />} />
+
         <Route path="/test/timing-attack/vulnerable/" element={<DocumentList />} />
         <Route path="/test/timing-attack/secure/" element={<DocumentListSecure />} />
 

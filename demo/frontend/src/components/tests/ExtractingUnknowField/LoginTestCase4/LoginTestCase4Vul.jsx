@@ -1,45 +1,48 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './LoginTestCase4.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./LoginTestCase4.css";
 
 const LoginTestCase4 = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
-      const response = await fetch('http://localhost:8800/api/vulnerable/case4/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "http://localhost:8800/api/vulnerable/case4/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+        throw new Error(data.message || "Login failed");
       }
 
       // Successful login
-      alert('Login successful!');
+      alert("Login successful!");
       // You could redirect here using navigate from react-router-dom
     } catch (err) {
       setError(err.message);
@@ -52,12 +55,8 @@ const LoginTestCase4 = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-title">Login</h2>
-        
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
+
+        {error && <div className="error-message">{error}</div>}
 
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -85,16 +84,15 @@ const LoginTestCase4 = () => {
           />
         </div>
 
-        <button 
-          type="submit" 
-          className="submit-button"
-          disabled={loading}
-        >
-          {loading ? 'Logging in...' : 'Login'}
+        <button type="submit" className="submit-button" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
 
         <div className="form-footer">
-          <Link to="/test/extract-unknowfield/vulnerable/forgot-password" className="forgot-password-link">
+          <Link
+            to="/test/extract-unknowfield/vulnerable/forgot-password"
+            className="forgot-password-link"
+          >
             Forgot Password?
           </Link>
         </div>
