@@ -7,11 +7,11 @@
 5. Timing attack
 6. Chain NoSQL injection and template injection
 ## Video demo:
-Case1 : https://youtu.be/kxzo7nUI_Vc
+Case1 (đã bao gồm 2 trường hợp): https://youtu.be/kxzo7nUI_Vc
 
-Case2 : https://youtu.be/GkDcJ1qRXOk
+Case2 (đã bao gồm 2 trường hợp): https://youtu.be/GkDcJ1qRXOk
 
-Case3 : https://youtu.be/PtnYYekjx_k
+Case3 (đã bao gồm 2 trường hợp): https://youtu.be/PtnYYekjx_k
 
 Case4 : https://youtu.be/VOYqiGQpPFM
 
